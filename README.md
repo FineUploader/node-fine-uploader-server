@@ -3,7 +3,7 @@ fine-uploader-server
 
 An [express](github.com/visionmedia/express) server for handling [Fine Uploader](github.com/widen/fine-uploader) upload requests.
 
-[![Build Status](https://travis-ci.org/Widen/node-fine-uploader-server.svg?branch=master)](https://travis-ci.org/Widen/node-fine-uploader-server)
+[![Build Status](http://img.shields.io/travis/Widen/node-fine-uploader-server.svg?style=flat)](https://travis-ci.org/Widen/node-fine-uploader-server)
 
 # Example
 
