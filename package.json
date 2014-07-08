@@ -1,6 +1,6 @@
 {
   "name": "fine-uploader-server",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Fine Uploader server for local and S3 storage.",
   "author": "Mark Feltner <mfeltner@widen.com>",
   "license": "MIT",
