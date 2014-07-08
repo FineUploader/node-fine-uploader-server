@@ -1,0 +1,13 @@
+nguage: node_js
+node_js:
+- '0.11'
+- '0.10'
+- '0.8'
+script:
+- npm test
+branches:
+    only:
+        - master
+        - develop
+        - /^feature.*$/
+        - /^hotfix.*$/

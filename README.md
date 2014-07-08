@@ -3,14 +3,15 @@ fine-uploader-server
 
 An [express](github.com/visionmedia/express) server for handling [Fine Uploader](github.com/widen/fine-uploader) upload requests.
 
-{badges}
+[![Build Status](https://travis-ci.org/Widen/node-fine-uploader-server.svg?branch=master)](https://travis-ci.org/Widen/node-fine-uploader-server)
 
 # Example
 
 `npm install -g fine-uploader-server`
 
 ```
-$ fine-uploader-server -u /tmp ./static # upload to /tmp; serve from ./static
+# upload to /tmp; serve from ./static
+$ fine-uploader-server --storage traditional --uploads-dir /tmp ./static
 ```
 
 To enable the debug log (useful for seeing what is going on):
@@ -75,8 +76,8 @@ Usage:
    fineuploader [options] STATIC
 
 
-   STATIC is an optional directory to host static files from 
-   
+   STATIC is an optional directory to host static files from
+
    -p, --port  The port (default: 8000)
    -h, --host  The hostname (default: localhost)
    -s, --storage The storage backend to use (default: traditional)
@@ -91,7 +92,7 @@ Usage:
 
 # Storage Backends
 
-Traditional and S3 storage backends are supported (with more planned). Non-chunked uploads, [chunked uploads](http://docs.fineuploader.com/branch/master/features/chunking.html), and [concurrently chunked uploads](http://docs.fineuploader.com/branch/master/features/concurrent-chunking.html) are supported. 
+Traditional and S3 storage backends are supported (with more planned). Non-chunked uploads, [chunked uploads](http://docs.fineuploader.com/branch/master/features/chunking.html), and [concurrently chunked uploads](http://docs.fineuploader.com/branch/master/features/concurrent-chunking.html) are supported.
 
 All backends also support delete requests.
 
@@ -125,7 +126,7 @@ delete operations, and to verify that a file has succesfully be uploaded.
 
 # Future Plans
 
-The intent of this is to eventually be an express server that can be easily ran anywhere and support any Fine Uploader endpoint type. 
+The intent of this is to eventually be an express server that can be easily ran anywhere and support any Fine Uploader endpoint type.
 
 The way this will work is that each endpoint handler will be a [connect middleware](http://stackoverflow.com/questions/5284340/what-is-node-js-connect-express-and-middleware). Each middleware will only depend on what it needs to depend on to get the job done. This repository will then act as a sort of meta-repository for Fine Uploader connect/express middleware, but bundled into an easy to run application. In the future, the user will be able to select which middleware they want to use and use this application if they so choose, without having to pull in dependencies for other middleware/storage backends.
 
@@ -149,6 +150,6 @@ If you add features, try to add tests! Or help me complete the tests because the
 
 ## Developing
 
-Just some notes... 
+Just some notes...
 
 `package.json` is used as the build tool currently. Run `npm test` to run the tests. `npm run devsrv` will run a test traditional storage backed. `npm run s3` will run a test s3, but make sure you have your credentials in environment variables (detailed above)!
