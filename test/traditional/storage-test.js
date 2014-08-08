@@ -202,11 +202,9 @@ describe('traditional - storage', function(){
                 var testChunksPath = path.join(chunksPath, chunk_mock.uuid),
                     chunkList = fs.readdirSync(testChunksPath);
 
-                console.log('done?');
-                done();
-                assert(chunkList.length == numChunks, "Missing " + (totalChunks - chunkList.length) + " chunks!");
-                //console.log('done?');
-                //done();
+                if (chunkList.length === numChunks)
+                    return done();
+                return done("Missing " + (totalChunks - chunkList.length) + " chunks!");
 
             }, function(e) {
                 assert(false, "Error storing chunk!");
@@ -227,14 +225,9 @@ describe('traditional - storage', function(){
                 var testChunksPath = path.join(chunksPath, chunk_mock.uuid),
                     chunkList = fs.readdirSync(testChunksPath);
 
-                console.log(chunkList.length);
-                console.log(numChunks - 1);
-
-                console.log("done?");
-                done();
-                assert(chunkList.length === numChunks - 1, "Missing " + (totalChunks - chunkList.length) + " chunks!");
-                //console.log("done?");
-                //done();
+                if (chunkList.length === numChunks)
+                    return done();
+                return done("Missing " + (totalChunks - chunkList.length) + " chunks!");
 
             }, function(e) {
                 assert(false, "Error storing chunk!");
