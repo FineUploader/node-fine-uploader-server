@@ -33,12 +33,12 @@
     "body-parser": "^1.0.2",
     "combined-stream": "0.0.4",
     "debug": "^0.8.1",
-    "express": "^4.1.2",
     "minimist": "0.0.9",
     "mkdirp": "0.3.5",
     "multer": "0.0.7",
     "mv": "^2.0.0",
     "promise": "^5.0.0",
+    "restify": "^2.8.4",
     "rimraf": "2.2.2",
     "st": "^0.4.1"
   },

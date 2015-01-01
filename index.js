@@ -1,6 +1,6 @@
 'use strict';
 
-var express = require('express'),
+var restify = require('restify'),
     debug = require('debug')('fineuploader');
 
 var bodyParser = require('body-parser'),
@@ -8,19 +8,20 @@ var bodyParser = require('body-parser'),
     st = require('st');
 
 module.exports = function(handlerModule, opts){
-    var app = express();
+    var server = restify.createServer({
+        name: 'fine-uploader-server'
+    });
 
     // request body parser
-    app.use(bodyParser.urlencoded({ extended: true }));
-    app.use(bodyParser.json());
-
-    // multipart request body parser
-    app.use(multer());
+    server.use(restify.bodyParser());
 
     // static site hosting
     if (opts.static) {
         debug("Hosting static files from: " + opts.static);
-        app.use(st(opts.static));
+        server.get(/\/?.*/, restify.serveStatic({
+            directory: opts.static,
+            default: 'index.html'
+        }));
     }
 
     // specification for routes
@@ -31,7 +32,7 @@ module.exports = function(handlerModule, opts){
             url: '/upload'
         },
         delete: {
-            method: 'delete',
+            method: 'del',
             url: '/upload/:uuid'
         },
 
@@ -53,7 +54,7 @@ module.exports = function(handlerModule, opts){
         uploadHandler = uploadHandlerModule(opts);
 
 
-    // apply the handler methods to the express application
+    // serverly the handler methods to the restify serverlication
     Object.keys(uploadHandler).forEach(function(handler_name){
         var route_spec = routes[handler_name],
             handler = uploadHandler[handler_name];
@@ -62,10 +63,10 @@ module.exports = function(handlerModule, opts){
             var method = route_spec.method,
                 url = route_spec.url;
 
-            app[method](url, handler);
+            server[method](url, handler);
         }
     });
 
-    return app;
+    return server;
 };
 
