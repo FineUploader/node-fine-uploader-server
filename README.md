@@ -1,6 +1,8 @@
 fine-uploader-server
 ----
 
+**NOTE: This project is no longer maintained. For more up-to-date Node.js server code that handles Fine Uploader requests, take a look at the [server-examples](https://github.com/FineUploader/server-examples/tree/master/nodejs) repository.**  
+
 An [express](github.com/visionmedia/express) server for handling [Fine Uploader](github.com/widen/fine-uploader) upload requests.
 
 [![Build Status](http://img.shields.io/travis/Widen/node-fine-uploader-server.svg?style=flat)](https://travis-ci.org/Widen/node-fine-uploader-server)
